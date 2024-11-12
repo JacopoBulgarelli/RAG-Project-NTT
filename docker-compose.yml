@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .  # Path to the Dockerfile location
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    environment:
+      - MONGO_URI=mongodb://mongo:27017  # MongoDB URI pointing to the MongoDB service
+    ports:
+      - "8000:8000"  # Expose FastAPI on localhost:8000
+    depends_on:
+      - mongo  # Ensure MongoDB starts first
+    volumes:
+      - .:/app  # Mount local directory to container (for dev only)
+    env_file:
+      - OpenAI.env  # Use OpenAI.env instead of .env
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"  # Expose MongoDB on localhost:27017
+    volumes:
+      - mongo_data:/data/db  # Persist MongoDB data
+
+volumes:
+  mongo_data:
