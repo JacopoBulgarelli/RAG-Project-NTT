@@ -1,0 +1,16 @@
+uvicorn
+fastapi
+pydantic
+langchain_community==0.2.16
+pymongo
+langchain-text-splitters==0.2.4
+langchain-core==0.2.38
+pandas
+PyMuPDF
+langchain==0.2.16
+langchain-huggingface==0.0.3
+faiss-cpu
+openai
+openpyxl
+python-dotenv
+faiss
